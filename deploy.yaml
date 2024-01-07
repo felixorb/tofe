@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tofe-deployment
+spec:
+  selector:
+    matchLabels:
+      app: tofe
+  replicas: 1 # 告知 Deployment 运行 1 个与该模板匹配的 Pod
+  template:
+    metadata:
+      labels:
+        app: tofe
+    spec:
+      containers:
+      - name: tofe
+        image: felixorb/tofe-server:1.0
+        ports:
+        - containerPort: 8080
